@@ -1,0 +1,25 @@
+# ART-Q Command Examples
+# Copy and paste these into the terminal to test functionality.
+
+# 1. Generate a Base QR Code
+/generate https://www.google.com
+
+# 2. Styling: Change Shapes
+# Available dots: square, rounded, dots, classy, classy-rounded, extra-rounded
+/style dots classy
+
+# Available corners: square, dot, extra-rounded
+/style corners extra-rounded
+
+# 3. Coloring: Advanced Controls
+# -bg: Background
+# -fg: Foreground (Dots)
+# -corners: Orientation Squares (Outer)
+# -corners-dot: Orientation Dots (Inner)
+/color -bg #111111 -fg #00ffff -corners #ff00ff -corners-dot #ffff00
+
+# 4. Add a Logo
+/add logo https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
+
+# 5. Export the Final Result
+qr export my-neon-qr
