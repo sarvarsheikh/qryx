@@ -1,21 +1,211 @@
-<<<<<<< HEAD
-# qryx
-This is just the simple service to create highly customizable  QR
-=======
-# React + Vite
+<p align="center">
+  <img src="public/logo.png" alt="QRYX Logo" width="80" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center" style="color: #e0e0e0;">
+  Q R Y X
+</h1>
 
-Currently, two official plugins are available:
+<p align="center">
+  <strong style="color: #45FF92;">Terminal-Themed QR Code Generator</strong>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <em>Generate · Style · Export — All from a cinematic terminal interface.</em>
+</p>
 
-## React Compiler
+<p align="center">
+  <img src="https://img.shields.io/badge/react-19.2-45FF92?style=flat-square&logo=react&logoColor=45FF92" alt="React" />
+  <img src="https://img.shields.io/badge/vite-7.2-45FF92?style=flat-square&logo=vite&logoColor=45FF92" alt="Vite" />
+  <img src="https://img.shields.io/badge/license-MIT-45FF92?style=flat-square" alt="MIT License" />
+  <img src="https://img.shields.io/badge/framer--motion-12.x-FF5555?style=flat-square&logo=framer&logoColor=FF5555" alt="Framer Motion" />
+</p>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🖥️ What is QRYX?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 0a23c27 (production ready)
+**QRYX** is a cinematic, terminal-themed QR code generator built for developers and designers who want full control over their QR codes — without leaving a command-line aesthetic.
+
+It's not just a QR tool. It's a **developer experience** wrapped in a dark, immersive interface with:
+
+- 🎯 **Slash-command system** — type commands like `/generate`, `/color`, `/style` to control every aspect of your QR code
+- 🎨 **Deep customization** — change dot shapes, corner styles, foreground/background colors, and embed custom logos
+- ⚡ **Real-time preview** — every command updates the QR code instantly on the right panel
+- 📱 **Responsive layouts** — optimized desktop terminal layout + dedicated mobile interface
+- 🎬 **Cinematic animations** — Lottie-powered QR reveal effects, scanline overlays, and flickering terminal boot sequences
+- 📥 **Multi-format export** — download your QR codes as PNG, JPG, or SVG
+
+---
+
+## 🎬 The QR Animation (`qr-animation.json`)
+
+The `qr-animation.json` Lottie file powers the **intro/idle animation** on the right panel before the user enters terminal mode. Here's what it is:
+
+- **A cinematic QR code reveal** — a stylized 300×307px animation running at **60fps** for ~67 frames
+- **Green pixel grid** — individual rectangular blocks colored in `rgb(128, 239, 128)` (a neon green matching the project theme) arranged in an 8×8 grid pattern across multiple rows
+- **Dissolve-flicker effect** — each block fades out with a multi-stage opacity flicker (100% → 0% → 25% → 0% → 6.3% → 0% → 1.6% → 0%), creating a glitchy digital dissolve
+- **QR code underlay** — beneath the dissolving grid, a full QR code image is revealed with the QRYX logo embedded at center
+- **Scanning frame overlay** — four corner brackets (L-shaped white strokes) frame the QR code like a camera viewfinder, with crosshair lines (horizontal + vertical) for a targeting/scanning aesthetic
+- **Staggered timing** — each pixel block starts its dissolve at a different time offset, creating a wave-like cascade across the grid
+
+The animation adapts its colors dynamically — when the user changes QR foreground colors via `/color`, the Lottie fill colors update in real-time to match.
+
+---
+
+## ⚙️ Commands Reference
+
+All commands are typed into the terminal input at the bottom of the left panel.
+
+### Generate a QR Code
+```
+/generate [url]
+```
+Creates a QR code for the given URL or text.
+```
+/generate https://github.com
+```
+
+### Color Customization
+```
+/color [flags]
+```
+| Flag | Description |
+|------|-------------|
+| `-bg [hex]` | Background color |
+| `-fg [hex]` | Dots / foreground color |
+| `-corners [hex]` | Corner squares (outer) |
+| `-corners-dot [hex]` | Corner dots (inner) |
+
+**Example — full neon theme:**
+```
+/color -bg #111111 -fg #00ffff -corners #ff00ff -corners-dot #ffff00
+```
+
+### Shape Styling
+```
+/style [part] [type]
+```
+| Part | Available Types |
+|------|----------------|
+| `dots` | `square`, `rounded`, `dots`, `classy`, `classy-rounded`, `extra-rounded` |
+| `corners` | `square`, `dot`, `extra-rounded` |
+
+```
+/style dots classy
+/style corners extra-rounded
+```
+
+### Logo Management
+```
+/add logo [url]       # Add a logo from URL
+/add logo             # Open local file picker
+/remove logo          # Remove the logo
+```
+```
+/add logo https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
+```
+
+### Export
+```
+qr export [filename] [format]
+```
+Supported formats: `png`, `jpg`, `svg`
+```
+qr export my-neon-qr png
+```
+
+### Test & Help
+```
+qr test               # Run scan reliability check
+/help                  # Show all available commands
+```
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/qryx.git
+cd qryx
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+### Build for Production
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| **React 19** | UI framework |
+| **Vite 7** | Build tool & dev server |
+| **qr-code-styling** | QR code generation with style API |
+| **Framer Motion** | Animations & micro-interactions |
+| **Lottie React** | JSON-based cinematic animations |
+| **JetBrains Mono** | Monospace font for terminal aesthetic |
+
+---
+
+## 🎨 Design System
+
+| Token | Value | Usage |
+|---|---|---|
+| `--color-bg-primary` | `#050505` | Main background |
+| `--color-bg-secondary` | `#0a0a0a` | Panel backgrounds |
+| `--color-neon-green` | `#45FF92` | Success states, accents |
+| `--color-alert-red` | `#FF5555` | Prompts, errors, hover fills |
+| `--color-text-primary` | `#e0e0e0` | Main text |
+| `--color-text-secondary` | `#888888` | Muted labels |
+| `--font-mono` | JetBrains Mono | All typography |
+
+---
+
+## 📁 Project Structure
+
+```
+qryx/
+├── public/
+│   ├── logo.png                  # App favicon & logo
+│   ├── QR_design.png             # OG image for social sharing
+│   ├── qr-animation.json         # Lottie: QR pixel dissolve (intro)
+│   ├── qr-reveal-animation.json  # Lottie: QR reveal on generate
+│   └── loading.json              # Lottie: Preloader animation
+├── src/
+│   ├── App.jsx                   # Root: routes desktop vs mobile
+│   ├── index.css                 # Design tokens & global styles
+│   ├── main.jsx                  # React entry point
+│   ├── components/
+│   │   ├── TerminalLayout.jsx    # Desktop layout shell
+│   │   ├── LeftPanel.jsx         # Command input & history
+│   │   ├── RightPanel.jsx        # QR preview, stats, export
+│   │   ├── MobileLayout.jsx      # Mobile responsive layout
+│   │   ├── Preloader.jsx         # Boot sequence animation
+│   │   ├── NoiseOverlay.jsx      # CRT noise & scanline effects
+│   │   └── ErrorBoundary.jsx     # Error fallback UI
+│   └── hooks/
+│       ├── useQRSystem.js        # Core command engine & QR state
+│       └── useIsMobile.js        # Responsive breakpoint hook
+├── index.html                    # HTML shell with SEO meta tags
+├── package.json
+└── vite.config.js
+```
+
+---
+
+## 📄 License
+
+MIT © [Sarvar Sheikh](https://github.com/sarvarsheikh)
