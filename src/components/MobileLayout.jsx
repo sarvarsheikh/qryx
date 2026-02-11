@@ -7,6 +7,7 @@ import qrAnimation from '../../public/qr-animation.json';
 const MobileLayout = () => {
     const {
         qrOptions,
+        isTerminalMode,
         handleCommand,
         fileInputRef,
         handleFileUpload,
@@ -16,15 +17,6 @@ const MobileLayout = () => {
     const qrRef = useRef(null);
     const qrCode = useRef(null);
     const [exportFormat, setExportFormat] = useState('png');
-    const [showIntro, setShowIntro] = useState(true);
-
-    // Intro Animation Timer
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowIntro(false);
-        }, 3000);
-        return () => clearTimeout(timer);
-    }, []);
 
     // QR Code Initialization & Update (Similar to RightPanel but simplified for mobile)
     useEffect(() => {
@@ -44,11 +36,10 @@ const MobileLayout = () => {
             qrRef.current.innerHTML = '';
             qrCode.current.append(qrRef.current);
         }
-    }, [qrOptions, showIntro]);
+    }, [qrOptions, isTerminalMode]);
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-            setShowIntro(false); // Hide intro immediately on command
             handleCommand(inputValue);
             setInputValue('');
         }
@@ -143,12 +134,12 @@ const MobileLayout = () => {
                     <div style={{ position: 'absolute', left: '50%', top: '-10%', height: '120%', width: '1px', backgroundColor: 'rgba(255,255,255,0.1)' }} />
                 </div>
 
-                {/* Actual QR or Intro Animation */}
-                {showIntro ? (
+                {/* Lottie Animation (default) or Generated QR */}
+                {!isTerminalMode ? (
                     <div style={{ width: '250px', height: '250px', zIndex: 10 }}>
                         <Lottie
                             animationData={qrAnimation}
-                            loop={true}
+                            loop={false}
                             autoplay={true}
                             style={{ width: '100%', height: '100%' }}
                         />

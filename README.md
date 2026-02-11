@@ -1,7 +1,7 @@
 <div style="background-color: #1e1e1e; color: #ffffff; padding: 30px 20px; border-radius: 12px;">
 
 <p align="center">
-  <img src="public/logo.png" alt="QRYX Logo" width="80" />
+  <img src="public/__logo.png" alt="QRYX Logo" width="80" />
 </p>
 
 <h1 align="center" style="color: #ffffff;">
@@ -22,11 +22,6 @@
   <img src="https://img.shields.io/badge/license-MIT-45FF92?style=flat-square" alt="MIT License" />
   <img src="https://img.shields.io/badge/framer--motion-12.x-FF5555?style=flat-square&logo=framer&logoColor=FF5555" alt="Framer Motion" />
 </p>
-
-<p align="center">
-  <img src="public/qr-animation-preview.webp" alt="QRYX QR Animation Preview" width="380" />
-</p>
-
 ---
 
 ## 🖥️ What is QRYX?
