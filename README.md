@@ -1,8 +1,10 @@
+<div style="background-color: #1e1e1e; color: #ffffff; padding: 30px 20px; border-radius: 12px;">
+
 <p align="center">
   <img src="public/logo.png" alt="QRYX Logo" width="80" />
 </p>
 
-<h1 align="center" style="color: #e0e0e0;">
+<h1 align="center" style="color: #ffffff;">
   Q R Y X
 </h1>
 
@@ -21,6 +23,10 @@
   <img src="https://img.shields.io/badge/framer--motion-12.x-FF5555?style=flat-square&logo=framer&logoColor=FF5555" alt="Framer Motion" />
 </p>
 
+<p align="center">
+  <img src="public/qr-animation-preview.webp" alt="QRYX QR Animation Preview" width="380" />
+</p>
+
 ---
 
 ## 🖥️ What is QRYX?
@@ -36,22 +42,6 @@ It's not just a QR tool. It's a **developer experience** wrapped in a dark, imme
 - 🎬 **Cinematic animations** — Lottie-powered QR reveal effects, scanline overlays, and flickering terminal boot sequences
 - 📥 **Multi-format export** — download your QR codes as PNG, JPG, or SVG
 
----
-
-## 🎬 The QR Animation (`qr-animation.json`)
-
-The `qr-animation.json` Lottie file powers the **intro/idle animation** on the right panel before the user enters terminal mode. Here's what it is:
-
-- **A cinematic QR code reveal** — a stylized 300×307px animation running at **60fps** for ~67 frames
-- **Green pixel grid** — individual rectangular blocks colored in `rgb(128, 239, 128)` (a neon green matching the project theme) arranged in an 8×8 grid pattern across multiple rows
-- **Dissolve-flicker effect** — each block fades out with a multi-stage opacity flicker (100% → 0% → 25% → 0% → 6.3% → 0% → 1.6% → 0%), creating a glitchy digital dissolve
-- **QR code underlay** — beneath the dissolving grid, a full QR code image is revealed with the QRYX logo embedded at center
-- **Scanning frame overlay** — four corner brackets (L-shaped white strokes) frame the QR code like a camera viewfinder, with crosshair lines (horizontal + vertical) for a targeting/scanning aesthetic
-- **Staggered timing** — each pixel block starts its dissolve at a different time offset, creating a wave-like cascade across the grid
-
-The animation adapts its colors dynamically — when the user changes QR foreground colors via `/color`, the Lottie fill colors update in real-time to match.
-
----
 
 ## ⚙️ Commands Reference
 
@@ -160,20 +150,6 @@ npm run preview
 
 ---
 
-## 🎨 Design System
-
-| Token | Value | Usage |
-|---|---|---|
-| `--color-bg-primary` | `#050505` | Main background |
-| `--color-bg-secondary` | `#0a0a0a` | Panel backgrounds |
-| `--color-neon-green` | `#45FF92` | Success states, accents |
-| `--color-alert-red` | `#FF5555` | Prompts, errors, hover fills |
-| `--color-text-primary` | `#e0e0e0` | Main text |
-| `--color-text-secondary` | `#888888` | Muted labels |
-| `--font-mono` | JetBrains Mono | All typography |
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -209,3 +185,5 @@ qryx/
 ## 📄 License
 
 MIT © [Sarvar Sheikh](https://github.com/sarvarsheikh)
+
+</div>
